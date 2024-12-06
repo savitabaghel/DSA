@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int leastInterval(vector<char>& tasks, int n) {
+       vector<int>mp(26,0);
+       int mf=0,count_mf=0,maxSize=tasks.size();
+       for(char i: tasks){
+        mp[i-'A']++;
+
+        if(mp[i-'A']>mf){
+            mf=mp[i-'A'];
+        }
+       }
+
+       for(int i=0;i<26;i++){
+        if(mp[i]==mf) count_mf++;
+       }
+       cout<<"mf"<<mf<<endl;
+       cout<<"count_mf"<<count_mf<<endl;
+       int time = (mf-1)*(n+1)+count_mf;
+       cout<<time<<endl;
+       return max(time,maxSize);
+    }
+};
